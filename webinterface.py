@@ -1,5 +1,6 @@
 from urllib import request
 from datetime import date
+
 cnfg = {}
 
 # open configuration file
