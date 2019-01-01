@@ -196,3 +196,10 @@ class QuoteRetrieval:
                     dump(daily_quotes_data, quotes_data_file)
                     quotes_data_file.close()
                     del daily_quotes_data
+
+        # clear temporary data
+
+        temp_data_path = 'data\\temporary'
+
+        if os.path.exists('%s\\quotes_datafile.zip' % temp_data_path):
+            os.remove('%s\\quotes_datafile.zip' % temp_data_path)
