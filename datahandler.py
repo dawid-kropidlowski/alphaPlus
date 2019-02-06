@@ -3,7 +3,8 @@ from json import load
 
 
 class DataLoader:
-    def __init__(self, ticker, start_date=date(1900, 1, 1), end_date=date.today(), quote_type='close'):
+    def __init__(self, ticker, start_date=date(1900, 1, 1), end_date=date.today(), quote_type='close',
+                 data_location='data'):
 
         if type(ticker) == str:
             self._ticker = ticker
@@ -25,10 +26,15 @@ class DataLoader:
         else:
             raise TypeError("quote_type should be of type str")
 
+        if type(data_location) == str:
+            self._data_location = data_location
+        else:
+            raise TypeError("data_location should of str type and point to folder where data are stored")
+
         self._quotes = []
 
-    def load_quotes(self):
-        with open("data\\%s.json" % self._ticker, 'r') as data_file:
+    def _load_quotes(self):
+        with open("%s\\%s.json" % (self._data_location, self._ticker), 'r') as data_file:
 
             quotes_json = load(data_file)
 
@@ -44,4 +50,5 @@ class DataLoader:
                     self._quotes.append(float(quotes_json[dates_str][self._quote_type]))
 
     def get_quotes(self):
+        self._load_quotes()
         return self._quotes

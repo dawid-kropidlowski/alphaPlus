@@ -2,218 +2,211 @@
   "20181101": {
     "open": 12,
     "high": 16,
-    " low": 17,
+    "low": 17,
     "close": 12,
     "volume": 7911
   },
   "20181102": {
     "open": 12,
     "high": 15,
-    " low": 18,
+    "low": 18,
     "close": 18,
     "volume": 6831
   },
   "20181103": {
     "open": 18,
     "high": 17,
-    " low": 12,
+    "low": 12,
     "close": 11,
     "volume": 1892
   },
   "20181104": {
     "open": 11,
     "high": 19,
-    " low": 11,
+    "low": 11,
     "close": 19,
     "volume": 1824
   },
   "20181105": {
     "open": 19,
     "high": 14,
-    " low": 20,
+    "low": 20,
     "close": 17,
     "volume": 1169
   },
   "20181106": {
     "open": 17,
     "high": 12,
-    " low": 16,
+    "low": 16,
     "close": 14,
     "volume": 1090
   },
   "20181107": {
     "open": 14,
     "high": 20,
-    " low": 13,
+    "low": 13,
     "close": 15,
     "volume": 5869
   },
   "20181108": {
     "open": 15,
     "high": 19,
-    " low": 16,
+    "low": 16,
     "close": 14,
     "volume": 7072
   },
   "20181109": {
     "open": 14,
     "high": 16,
-    " low": 17,
+    "low": 17,
     "close": 10,
     "volume": 4181
   },
   "20181110": {
     "open": 10,
     "high": 19,
-    " low": 13,
+    "low": 13,
     "close": 17,
     "volume": 3971
   },
   "20181111": {
     "open": 17,
     "high": 10,
-    " low": 18,
+    "low": 18,
     "close": 17,
     "volume": 4776
   },
   "20181112": {
     "open": 17,
     "high": 11,
-    " low": 11,
+    "low": 11,
     "close": 18,
     "volume": 5232
   },
   "20181113": {
     "open": 18,
     "high": 12,
-    " low": 18,
+    "low": 18,
     "close": 16,
     "volume": 3122
   },
   "20181114": {
     "open": 16,
     "high": 14,
-    " low": 13,
+    "low": 13,
     "close": 11,
     "volume": 6601
   },
   "20181115": {
     "open": 11,
     "high": 15,
-    " low": 20,
+    "low": 20,
     "close": 19,
     "volume": 1276
   },
   "20181116": {
     "open": 19,
     "high": 10,
-    " low": 17,
+    "low": 17,
     "close": 20,
     "volume": 1483
   },
   "20181117": {
     "open": 20,
     "high": 15,
-    " low": 14,
+    "low": 14,
     "close": 11,
     "volume": 6479
   },
   "20181118": {
     "open": 11,
     "high": 17,
-    " low": 18,
+    "low": 18,
     "close": 19,
     "volume": 2294
   },
   "20181119": {
     "open": 19,
     "high": 20,
-    " low": 15,
+    "low": 15,
     "close": 15,
     "volume": 5622
   },
   "20181120": {
     "open": 15,
     "high": 13,
-    " low": 14,
+    "low": 14,
     "close": 14,
     "volume": 6252
   },
   "20181121": {
     "open": 14,
     "high": 13,
-    " low": 10,
+    "low": 10,
     "close": 20,
     "volume": 5422
   },
   "20181122": {
     "open": 20,
     "high": 13,
-    " low": 15,
+    "low": 15,
     "close": 20,
     "volume": 6811
   },
   "20181123": {
     "open": 20,
     "high": 17,
-    " low": 18,
+    "low": 18,
     "close": 16,
     "volume": 5853
   },
   "20181124": {
     "open": 16,
     "high": 12,
-    " low": 10,
+    "low": 10,
     "close": 20,
     "volume": 6692
   },
   "20181125": {
     "open": 20,
     "high": 10,
-    " low": 19,
+    "low": 19,
     "close": 20,
     "volume": 7188
   },
   "20181126": {
     "open": 20,
     "high": 11,
-    " low": 19,
+    "low": 19,
     "close": 14,
     "volume": 4200
   },
   "20181127": {
     "open": 14,
     "high": 16,
-    " low": 19,
+    "low": 19,
     "close": 16,
     "volume": 5709
   },
   "20181128": {
     "open": 16,
     "high": 11,
-    " low": 13,
+    "low": 13,
     "close": 18,
     "volume": 3278
   },
   "20181129": {
     "open": 18,
     "high": 16,
-    " low": 12,
+    "low": 12,
     "close": 15,
     "volume": 4914
   },
   "20181130": {
     "open": 15,
     "high": 18,
-    " low": 15,
+    "low": 15,
     "close": 11,
     "volume": 1508
-  },
-  "20181131": {
-    "open": 11,
-    "high": 15,
-    " low": 17,
-    "close": 16,
-    "volume": 7787
   }
 }
