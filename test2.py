@@ -1,5 +1,9 @@
-import webscraper
+from datahandler import DataLoader
 
-new_quotes = webscraper.QuoteRetrieval(last_day_close=False, headers=True, start_date="test")
+ticker = "11BIT"
+load_ticker = DataLoader(ticker=ticker)
+load_ticker.load_quotes()
+
+# new_quotes = webscraper.QuoteRetriever()
 
 # new_quotes.save_quotes()

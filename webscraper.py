@@ -5,7 +5,7 @@ from json import load, dump
 from urllib import request
 
 
-class QuoteRetrieval:
+class QuoteRetriever:
 
     def __init__(self, source="bossa.pl", start_date=date(1990, 1, 1), end_date=date.today(), last_day_close=True,
                  fin_instrument="stock", tickers="all", headers=False):
@@ -29,32 +29,32 @@ class QuoteRetrieval:
         if type(start_date) == date:
             self._start_date = start_date
         else:
-            raise ValueError("start_date must be of date type")
+            raise TypeError("start_date must be of date type")
 
         if type(end_date) == date:
             self._end_date = end_date
         else:
-            raise ValueError("end_date must be of date type")
+            raise TypeError("end_date must be of date type")
 
         if type(last_day_close) == bool:
             self._last_day_close = last_day_close
         else:
-            raise ValueError("last_day_close must be of date type")
+            raise TypeError("last_day_close must be of date type")
 
-        if tickers == str or tickers == list:
+        if type(tickers) == str or type(tickers) == list:
             self._tickers = tickers
         else:
-            raise ValueError("tickers must be of str or list type")
+            raise TypeError("tickers must be of str or list type")
 
-        if fin_instrument == str:
+        if type(fin_instrument) == str:
             self._fin_instrument = fin_instrument
         else:
-            raise ValueError("fin_instrument must be of str type")
+            raise TypeError("fin_instrument must be of str type")
 
-        if headers == bool:
+        if type(headers) == bool:
             self._headers = headers
         else:
-            raise ValueError("headers must be of bool type")
+            raise TypeError("headers must be of bool type")
 
         self._url = ""
         self._data = {}
@@ -80,6 +80,7 @@ class QuoteRetrieval:
 
         # load url containing the data and structure
 
+        request.urlopen(cnfg["url"])
         self._url = cnfg["url"]
         self._data = cnfg["data"]
 
