@@ -60,14 +60,14 @@ class QuoteRetriever:
         self._data = {}
         self._quotes = {}
         self._headers_back = False
+        self._path = os.path.dirname(__file__)
         self._load_configuration()
         self._retrieve_quotes()
 
     def _load_configuration(self):
 
         # open configuration file
-
-        config_file = open('config.json', 'r')
+        config_file = open(os.path.join(self._path, 'config.json'), 'r')
         cnfg = load(config_file)
         config_file.close()
 
@@ -87,6 +87,8 @@ class QuoteRetriever:
     def _retrieve_quotes(self):
 
         # there is a different way to retrieve data from .zip files and different for text-like files (csv etc.)
+        temp_data_path = os.path.join(self._path, "data", "temporary")
+
         if self._url.split('.')[len(self._url.split('.')) - 1] != 'zip':
 
             # open url containing data and load data
@@ -95,20 +97,19 @@ class QuoteRetriever:
 
         # retrieve data from .zip file
         else:
-            temp_data_path = 'data\\temporary'
 
             # create a folder to keep temporary data in
             if not os.path.exists(temp_data_path):
                 os.mkdir(temp_data_path)
 
-            if os.path.exists('%s\\quotes_datafile.zip' % temp_data_path):
-                os.remove('%s\\quotes_datafile.zip' % temp_data_path)
+            if os.path.exists(os.path.join(temp_data_path, 'quotes_datafile.zip')):
+                os.remove(os.path.join(temp_data_path, 'quotes_datafile.zip'))
 
             # retrieve zip from url and save it in temporary folder
-            request.urlretrieve(self._url, '%s\\quotes_datafile.zip' % temp_data_path)
+            request.urlretrieve(self._url, os.path.join(temp_data_path, 'quotes_datafile.zip'))
 
             # go through the zip and open files containing quotes for given tickers
-            with zipfile.ZipFile('%s\\quotes_datafile.zip' % temp_data_path, 'r') as data_zip:
+            with zipfile.ZipFile(os.path.join(temp_data_path, 'quotes_datafile.zip'), 'r') as data_zip:
                 # if all tickers from the file are required then go through all the quotes and extract them
                 if self._tickers == 'all':
                     for data_file in data_zip.filelist:
@@ -118,6 +119,8 @@ class QuoteRetriever:
                     for ticker in self._tickers:
                         with data_zip.open('%s.mst' % ticker, 'r') as quotes_file:
                             self._read_quotes_file(quotes_file)
+
+        os.remove(os.path.join(temp_data_path, 'quotes_datafile.zip'))
 
     def _read_quotes_file(self, quotes_file):
 
@@ -168,7 +171,7 @@ class QuoteRetriever:
 
             # check if there is a file with quotes for this ticker
             try:
-                with open("data\%s.json" % ticker, "r") as quotes_data_file:
+                with open(os.path.join(self._path, "data", "%s.json" % ticker), "r") as quotes_data_file:
                     # load quotes from file
                     daily_quotes_data = load(quotes_data_file)
                     quotes_data_file.close()
@@ -181,7 +184,7 @@ class QuoteRetriever:
                 except ValueError:
                     continue
 
-                with open("data\%s.json" % ticker, "w") as quotes_data_file:
+                with open(os.path.join(self._path, "data", "%s.json" % ticker), "w") as quotes_data_file:
                     dump(daily_quotes_data, quotes_data_file)
                     quotes_data_file.close()
                     del daily_quotes_data
@@ -193,14 +196,14 @@ class QuoteRetriever:
                 for quote_date in self._quotes[ticker]:
                     daily_quotes_data[quote_date] = self._quotes[ticker][quote_date]
 
-                with open("data\%s.json" % ticker, "w") as quotes_data_file:
+                with open(os.path.join(self._path, "data", "%s.json" % ticker), "w") as quotes_data_file:
                     dump(daily_quotes_data, quotes_data_file)
                     quotes_data_file.close()
                     del daily_quotes_data
 
         # clear temporary data
 
-        temp_data_path = 'data\\temporary'
+        temp_data_path = os.path.join(self._path, "data", "temporary")
 
-        if os.path.exists('%s\\quotes_datafile.zip' % temp_data_path):
-            os.remove('%s\\quotes_datafile.zip' % temp_data_path)
+        if os.path.exists(os.path.join(temp_data_path, 'quotes_datafile.zip')):
+            os.remove(os.path.join(temp_data_path, 'quotes_datafile.zip'))
