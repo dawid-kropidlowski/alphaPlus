@@ -33,12 +33,27 @@ class DescriptiveStatistics:
             sum += (self._quotes_series[quote_date] - avg) ** 2
             count += 1
         try:
-            std_dev = (sum / (count - 1)) ** 0.5
+            std_dev = (sum / count) ** 0.5
         except ZeroDivisionError:
             std_dev = 0
 
         return std_dev
 
+    def variance(self):
+
+        sum = 0
+        count = 0
+        avg = self.average()
+
+        for quote_date in self._quotes_series:
+            sum += (self._quotes_series[quote_date] - avg) ** 2
+            count += 1
+        try:
+            var = sum / count
+        except ZeroDivisionError:
+            var = 0
+
+        return var
 
 class VarianceCovarianceAnalyser:
 

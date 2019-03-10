@@ -20,7 +20,13 @@ class TestDescriptiveStatistics(unittest.TestCase):
                                  "").get_quotes()
         std_dev = DescriptiveStatistics(test_quotes).standard_deviation()
 
-        self.assertEqual(round(std_dev, 5), 3.17696)
+        self.assertEqual(round(std_dev, 5), 3.12357)
+
+    def test_variance(self):
+        test_quotes = DataLoader(os.path.join("tests", "test_data"), date(2018, 11, 1), date(2018, 11, 30), "close",
+                                 "").get_quotes()
+        variance = DescriptiveStatistics(test_quotes).variance()
+        self.assertEqual(round(variance, 14), 9.75666666666667)
 
 
 class TestVarianceCovarianceAnalyser(unittest.TestCase):
@@ -44,3 +50,12 @@ class TestVarianceCovarianceAnalyser(unittest.TestCase):
         covariance = VarianceCovarianceAnalyser(test_quotes1, test_quotes2).covariance()
 
         self.assertEqual(round(covariance, 11), -0.30202140309)
+
+    def test_covariance_same_data(self):
+        test_quotes1 = DataLoader(os.path.join("tests", "test_data"), date(2018, 11, 1), date(2018, 11, 30), "close",
+                                  "").get_quotes()
+
+        covariance = VarianceCovarianceAnalyser(test_quotes1, test_quotes1).covariance()
+        variance = DescriptiveStatistics(test_quotes1).variance()
+
+        self.assertEqual(covariance, variance)
