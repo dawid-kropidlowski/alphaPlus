@@ -26,6 +26,16 @@ class DataHandlerInitializerTest(unittest.TestCase):
         with self.assertRaises(TypeError):
             DataLoader(quote_type=quote_type, ticker="11BIT")
 
+    def test_freq_type(self):
+        freq = 10
+        with self.assertRaises(TypeError):
+            DataLoader(freq=freq, ticker="11BIT")
+
+    def test_freq_values(self):
+        freq = 'b'
+        with self.assertRaises(ValueError):
+            DataLoader(freq=freq, ticker="11BIT")
+
 
 class TestDataLoading(unittest.TestCase):
 
@@ -89,6 +99,31 @@ class TestDataLoading(unittest.TestCase):
                    '20181126': 4200.0, '20181127': 5709.0, '20181128': 3278.0, '20181129': 4914.0, '20181130': 1508.0}
 
         self.assertEqual(test_volumes.get_quotes(), volumes)
+
+    def test_frequency_w(self):
+        test_quotes = DataLoader(os.path.join("tests", "test_data"), date(2018, 11, 1), date(2018, 11, 30), "close", "",
+                                 freq='w')
+
+        close_quotes = {'20181101': 12.0, '20181108': 14.0, '20181115': 19.0, '20181122': 20.0, '20181129': 15.0}
+
+        self.assertEqual(test_quotes.get_quotes(), close_quotes)
+
+    def test_frequency_m(self):
+        test_quotes = DataLoader(os.path.join("tests", "11BIT_test"), date(2018, 5, 2), date(2018, 11, 30), "close", "",
+                                 freq='m')
+
+        close_quotes = {'20180502': 350.00, '20180604': 488.00, '20180704': 434.00, '20180806': 441.00,
+                        '20180906': 335.50, '20181008': 303.50, '20181108': 295.00}
+
+        self.assertEqual(test_quotes.get_quotes(), close_quotes)
+
+    def test_frequency_y(self):
+        test_quotes = DataLoader(os.path.join("tests", "11BIT_test"), date(2017, 1, 2), date(2018, 11, 30), "close", "",
+                                 freq='y')
+
+        close_quotes = {'20170102': 147.10}
+
+        self.assertEqual(test_quotes.get_quotes(), close_quotes)
 
 
 if __name__ == '__main__':

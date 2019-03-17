@@ -55,6 +55,7 @@ class DescriptiveStatistics:
 
         return var
 
+
 class VarianceCovarianceAnalyser:
 
     def __init__(self, quotes_set1, quotes_set2, skip_non_matching=True):
